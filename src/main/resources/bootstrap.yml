@@ -10,3 +10,5 @@ spring:
     admin:
       client:
         url: http://localhost:8086
+  main:
+    allow-bean-definition-overriding: true

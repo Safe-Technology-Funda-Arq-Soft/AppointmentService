@@ -1,6 +1,9 @@
 package com.api.safetech.appointmentservice.appointment.resource;
 
+import com.api.safetech.appointmentservice.appointment.domain.model.entity.Appliance;
 import com.api.safetech.appointmentservice.appointment.domain.model.entity.Status;
+import com.api.safetech.appointmentservice.appointment.domain.model.entity.Technical;
+import com.api.safetech.appointmentservice.appointment.domain.model.entity.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,4 +20,8 @@ public class AppointmentResource {
     private Integer userId;
     private Integer technicalId;
     private Integer applianceId;
+    private User user;
+    private Technical technical;
+    private Appliance appliance;
+
 }

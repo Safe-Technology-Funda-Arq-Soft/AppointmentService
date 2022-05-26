@@ -1,6 +1,12 @@
 package com.api.safetech.appointmentservice.appointment.service;
 
+import com.api.safetech.appointmentservice.appointment.client.ApplianceClient;
+import com.api.safetech.appointmentservice.appointment.client.TechnicalClient;
+import com.api.safetech.appointmentservice.appointment.client.UserClient;
+import com.api.safetech.appointmentservice.appointment.domain.model.entity.Appliance;
 import com.api.safetech.appointmentservice.appointment.domain.model.entity.Appointment;
+import com.api.safetech.appointmentservice.appointment.domain.model.entity.Technical;
+import com.api.safetech.appointmentservice.appointment.domain.model.entity.User;
 import com.api.safetech.appointmentservice.appointment.domain.persistence.AppointmentRepository;
 import com.api.safetech.appointmentservice.appointment.domain.service.AppointmentService;
 import com.api.safetech.appointmentservice.shared.exception.ResourceNotFoundException;
@@ -19,6 +25,14 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Autowired
     private AppointmentRepository appointmentRepository;
 
+    @Autowired
+    UserClient userClient;
+
+    @Autowired
+    TechnicalClient technicalClient;
+
+    @Autowired
+    ApplianceClient applianceClient;
 
     @Override
     public List<Appointment> getAll() {
@@ -27,8 +41,18 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public Appointment getById(Long appointmentId) {
-        return appointmentRepository.findById(appointmentId)
+
+        Appointment appointment = appointmentRepository.findById(appointmentId)
                 .orElseThrow(()-> new ResourceNotFoundException(ENTITY, appointmentId));
+        if(null != appointment){
+            User user = userClient.getUserById(appointment.getUserId()).getBody();
+            appointment.setUser(user);
+            Technical technical = technicalClient.getById(appointment.getTechnicalId()).getBody();
+            appointment.setTechnical(technical);
+            Appliance appliance = applianceClient.getApplianceById(appointment.getApplianceId()).getBody();
+            appointment.setAppliance(appliance);
+        }
+        return appointment;
     }
 
     @Override

@@ -37,13 +37,22 @@ public class Appointment extends AuditModel {
     private Status status;
 
     @NotNull
-    private Integer userId;
+    private Long userId;
 
     @NotNull
-    private Integer technicalId;
+    private Long technicalId;
 
     @NotNull
-    private Integer applianceId;
+    private Long applianceId;
+
+    @Transient
+    private User user;
+
+    @Transient
+    private Technical technical;
+
+    @Transient
+    private Appliance appliance;
 
 
 
