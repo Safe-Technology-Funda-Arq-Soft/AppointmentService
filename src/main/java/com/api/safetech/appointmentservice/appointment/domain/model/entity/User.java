@@ -1,5 +1,6 @@
 package com.api.safetech.appointmentservice.appointment.domain.model.entity;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.Email;
@@ -9,6 +10,7 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Data
+@Builder
 public class User {
     private Long id;
     private String firstName;

@@ -12,3 +12,7 @@ spring:
         url: http://localhost:8086
   main:
     allow-bean-definition-overriding: true
+
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: "*"

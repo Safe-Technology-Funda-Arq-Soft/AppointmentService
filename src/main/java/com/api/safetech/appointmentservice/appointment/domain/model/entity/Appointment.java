@@ -54,6 +54,4 @@ public class Appointment extends AuditModel {
     @Transient
     private Appliance appliance;
 
-
-
 }

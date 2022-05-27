@@ -23,5 +23,4 @@ public class AppointmentResource {
     private User user;
     private Technical technical;
     private Appliance appliance;
-
 }

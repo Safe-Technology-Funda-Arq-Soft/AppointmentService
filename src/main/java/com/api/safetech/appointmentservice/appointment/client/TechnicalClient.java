@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@FeignClient(name = "technical-service", path = "/api/v1/technicals")
+@FeignClient(name = "technical-service", fallback = TechnicalHystrixFallbackFactory.class)
 public interface TechnicalClient {
 
-    @GetMapping("{technicalId}")
+    @GetMapping("api/v1/technicals/{technicalId}")
     public ResponseEntity<Technical> getById(@PathVariable Long technicalId);
 }
