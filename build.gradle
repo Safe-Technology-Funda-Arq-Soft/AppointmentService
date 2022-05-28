@@ -19,7 +19,7 @@ repositories {
 }
 
 ext {
-	set('springBootAdminVersion', "2.3.0")
+	set('springBootAdminVersion', "2.6.7")
 	set('springCloudVersion', "2021.0.2")
 }
 
@@ -29,8 +29,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-	//implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
-	//implementation 'de.codecentric:spring-boot-admin-starter-client'
+	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+	implementation 'de.codecentric:spring-boot-admin-starter-client:2.6.7'
 	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix:2.2.10.RELEASE'
